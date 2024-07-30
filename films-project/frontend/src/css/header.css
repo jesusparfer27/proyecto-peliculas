@@ -1,0 +1,12 @@
+.headerContainer {
+    height: auto;
+    width: 100%;
+    background-color: blue;
+
+}
+
+.headerBlock {
+    display: flex;
+    
+}
+
