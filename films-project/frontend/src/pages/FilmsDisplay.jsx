@@ -5,7 +5,7 @@ import '../css/filmdisplay.css';
 const FilmsDisplay = () => {
     const [users, setUsers] = useState([]); // Inicializa users como un array vacío
     const [films, setFilms] = useState([]); // Inicializa films como un array vacío
-    const [isVista, setIsVista] = useState(false); // Estado para manejar la visibilidad
+    const [isVista, setIsVista] = useState({}); // Estado para manejar la visibilidad de cada película
 
     const { setFilms: setFilmsFromContext } = useContext(FilmsContext);
 
@@ -18,6 +18,14 @@ const FilmsDisplay = () => {
                 setUsers(data.users || []); // Asegúrate de que data.users es un array
                 setFilms(data.films || []); // Asegúrate de que data.films es un array
                 setFilmsFromContext(data.films || []); // Asegúrate de actualizar el contexto correctamente
+
+                // Inicializa el estado isVista con todas las películas no vistas
+                const initialVistaState = {};
+                data.films.forEach(film => {
+                    initialVistaState[film.id] = false;
+                });
+                setIsVista(initialVistaState);
+
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -33,10 +41,11 @@ const FilmsDisplay = () => {
     };
 
     // Función para manejar el clic del botón
-    const handleEventListener = () => {
-        if (!isVista) {
-            setIsVista(true); // Cambia isVista a true solo si actualmente es false
-        }
+    const handleEventListener = (filmId) => {
+        setIsVista(prevIsVista => ({
+            ...prevIsVista,
+            [filmId]: !prevIsVista[filmId] // Alterna el estado de visibilidad
+        }));
     };
 
     if (!films.length) {
@@ -56,18 +65,19 @@ const FilmsDisplay = () => {
                                 className="filmImage"
                             />
                             <div className="filmDetails">
-                                <h2>{film.title}</h2>
-                                <p>Director: {film.director}</p>
-                                <p>Year: {film.year}</p>
-                                <p>Seen: {film.isSeen ? 'Yes' : 'No'}</p>
-                                <p>User: {getUserNameById(film.idUser)}</p>
-                                <button
-                                    className='isVistaButton'
-                                    onClick={handleEventListener} // Llama a handleEventListener al hacer clic
-                                >
-                                    {isVista ? 'Watch the movie' : 'Watch again'}
-                                </button>
-
+                                <h2 className='h2Title'>{film.title}</h2>
+                                <p className='pDirector'>Director: {film.director}</p>
+                                <p className='pYear'>Year: {film.year}</p>
+                                <p className='pSeen'>Seen: {isVista[film.id] ? 'Yes' : 'No'}</p> {/* Corrección aquí */}
+                                <p className='pUser'>User: {getUserNameById(film.idUser)}</p>
+                                <div className="divButton">
+                                    <button
+                                        className='isVistaButton'
+                                        onClick={() => handleEventListener(film.id)} // Pasa el id de la película al manejar el clic
+                                    >
+                                        {isVista[film.id] ? 'Watch again' : 'Watch the movie'}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </li>

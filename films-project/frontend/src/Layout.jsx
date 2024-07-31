@@ -3,20 +3,24 @@ import { createContext, useState } from 'react'
 import Header from './components/Header'
 
 export const FilmsContext = createContext()
+export const SearchBarContext = createContext()
 
 function Layout() {
 
+  const [filter, setFilter] = useState("")
   const [films, setFilms] = useState([])
 
   return (
+    <SearchBarContext.Provider value={filter}>
     <FilmsContext.Provider value={films}>
       <Header />
-        <div className='allContent'>
+        
           <main className='allMainContent'>
             <Outlet />
           </main>
-        </div>
+        
     </FilmsContext.Provider>
+    </SearchBarContext.Provider>
   )
 }
 
