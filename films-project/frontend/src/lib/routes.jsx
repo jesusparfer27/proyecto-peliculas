@@ -18,10 +18,6 @@ const router = createBrowserRouter([{
     children: [
         {
             index: true,
-            element: <Layout/>
-        },
-        {
-            index: '/signin',
             element: <FormPage/>
         },
         {

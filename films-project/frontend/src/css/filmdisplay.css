@@ -1,0 +1,28 @@
+.filmImage {
+    width: 30%;
+    max-height: 30%;
+}
+
+.listFilms {
+    list-style: none;
+    width: 100%;
+    
+}
+
+ul {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    gap: 3rem;
+}
+
+.filmItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+.filmsDisplayContainer {
+    background-color: gainsboro;
+}

@@ -1,0 +1,71 @@
+/* Contenedor principal */
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sectionFormPage {
+    background-image: url("https://s1.elespanol.com/2022/12/07/series/cine/724187853_229296915_1706x960.jpg");
+    background-size: cover;  /* Asegura que la imagen cubra el contenedor */
+    background-position: center;  /* Centra la imagen */
+    filter: grayscale(100%); 
+}
+
+.h1FormPage {
+    color: white;
+    text-align: center;
+    margin-top: 10rem;
+
+    
+}
+
+.formInput {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;       /* Asegura que el contenedor ocupe al menos la altura de la ventana */
+}
+
+/* Estilo del encabezado */
+.h3Input {
+    font-size: 2rem;
+}
+
+/* Contenedor del input */
+.inputContainer {
+    background-color: red;
+    width: 80%;           
+    max-width: 800px;        
+    padding: 2rem;     
+    display: flex;
+    flex-direction: column;  
+    border-radius: 0.8rem;
+    margin-bottom: 22rem;
+}
+
+.inputEmail::placeholder {
+    font-size: 1rem;
+}
+
+/* Estilo del input */
+input {
+    width: 80%;              /* Ajusta el ancho del input al 100% del contenedor padre */
+    padding: 1rem;
+    border-radius: 0.6rem;
+}
+
+.buttonForm {
+    width: 40%;
+    margin-top: 3rem;
+    padding-top: .8rem;
+    padding-bottom: .6rem;
+    border-radius: .8rem;
+}
+
+.buttonBlock {
+    display: flex;
+    justify-content: center;
+}

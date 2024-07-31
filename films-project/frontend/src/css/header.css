@@ -1,12 +1,40 @@
 .headerContainer {
     height: auto;
     width: 100%;
-    background-color: blue;
-
+    background-color: gainsboro;
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
 }
 
 .headerBlock {
     display: flex;
-    
+    justify-content: space-around;
+    align-items: center;
 }
 
+.headerLink {
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+}
+
+.headerLink:hover {
+    font-weight: bold;
+    color: black;
+}
+
+.menuLi{
+    list-style: none;
+    padding: 1rem;
+}
+
+.headerLink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.7rem;
+}
+
+.material-symbols-outlined {
+    font-size: 2rem;
+}
